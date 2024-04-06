@@ -2,3 +2,6 @@ res://player.tscn
 res://node.tscn
 res://tile_map.tscn
 res://main.tscn
+res://maze_gen.gd
+res://Camera2D.gd
+res://player.gd
