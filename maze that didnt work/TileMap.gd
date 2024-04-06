@@ -32,6 +32,7 @@ func check_neighbors(cell, unvisited):
 		if cell + n in unvisited:
 			list.append(cell + n)
 	return list
+
 	
 func make_maze():
 	var unvisited = []
@@ -45,7 +46,7 @@ func make_maze():
 			Map.set_cell(0, Vector2i(x, y), N|E|S|W)
 	var current = Vector2i(0,0)
 	unvisited.erase(current) #removes from unvisited list
-	
+
 	while unvisited: 
 		var neighbors = check_neighbors(current,unvisited)
 		if neighbors.size() > 0: #checks that all the neighbors are unvisited. 
@@ -59,6 +60,6 @@ func make_maze():
 			Map.set_cell(0, next, next_walls)
 			current = next
 		elif stack: #if we have no more neighbors, backtracks
-			current = stack.pop_back() 
+			current = stack.pop_back()
 
-	
+

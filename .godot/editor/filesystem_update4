@@ -1,1 +1,4 @@
 res://Maze.tscn
+res://TileMap.gd
+res://default_env.tres
+res://player.tscn
