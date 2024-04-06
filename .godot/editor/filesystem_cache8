@@ -1,4 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
+::res://::1712376396
+Character.png::CompressedTexture2D::981442126768390223::1712370382::1712373028::1::::<><>::
+Crab_AttackC.png::CompressedTexture2D::8541719799923057478::1712372811::1712373028::1::::<><>::
+Crab_Death.png::CompressedTexture2D::7042913119589603559::1712372811::1712373028::1::::<><>::
+Crab_Run.png::CompressedTexture2D::991668921402900987::1712372811::1712373028::1::::<><>::
+game_singleton.gd::GDScript::-1::1712376363::0::1::::<>Node<>::
+icon.svg::CompressedTexture2D::1206878661734405548::1712359904::1712373028::1::::<><>::
+Mob.gd::GDScript::-1::1712376363::0::1::::<>RigidBody2D<>::
+mob.tscn::PackedScene::1848629799335773507::1712376363::0::1::::<><>::res://Mob.gd<>uid://dtxw428i52whi::::res://Crab_AttackC.png<>uid://c7lv0rd23lphf::::res://Crab_Death.png<>uid://oemv3pa7jsql::::res://Crab_Run.png
+player.gd::GDScript::-1::1712376363::0::1::::<>Area2D<>::
+player.tscn::PackedScene::4091653922494232939::1712375658::0::1::::<><>::res://player.gd<>uid://n8ohc7onas8v::::res://Character.png
 ::res://::1712379364
 Camera2D.gd::GDScript::-1::1696079127::0::1::::<>Camera2D<>::
 Character.png::CompressedTexture2D::981442126768390223::1712370367::1712371609::1::::<><>::
@@ -10,8 +21,6 @@ main.gd::GDScript::-1::1712379361::0::1::::<>Node2D<>::
 main.tscn::PackedScene::8601562664520102172::1712379315::0::1::::<><>::uid://4ioamq3p04er::::res://tile_map.tscn<>res://main.gd
 maze_gen.gd::GDScript::-1::1712379228::0::1::::MazeGen<>TileMap<>::
 node.tscn::PackedScene::7456610235224822456::1712378402::0::1::::<><>::
-player.gd::GDScript::-1::1712372569::0::1::::<>Area2D<>::
-player.tscn::PackedScene::8417628021022156640::1712378402::0::1::::<><>::res://player.gd<>uid://n8ohc7onas8v::::res://Character.png
 tile_map.tscn::PackedScene::2052842181724473413::1696079127::0::1::::<><>::res://maze_gen.gd<>res://Camera2D.gd<>res://voxelExpansion_tilesheet.png
 tileset.tscn::PackedScene::4662992310526012788::1712379315::0::1::::<><>::
 voxelExpansion_spritesheet.png::CompressedTexture2D::-1::1696079127::1696079127::1::::<><>::

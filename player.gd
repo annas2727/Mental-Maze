@@ -10,16 +10,19 @@ signal hit
 # Establish screen size of the game window 
 var screen_size
 
-
 # Call when the node enters the scene tree for the first time
 func _ready():
 	#hide()
 	screen_size = get_viewport_rect().size
-	start(screen_size / 2)
+	_start(screen_size / 2)
+	# Use the singleton to assign player for others to access
+	GameSingleton.player = self
 
 # Move the player by detecting associated keyboard presses with up, down, etc.
 func _process(delta):
 	var velocity = Vector2.ZERO
+	# Use the singleton to assign player position for others to access
+	GameSingleton.player_position = global_position
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -50,7 +53,7 @@ func _on_body_entered(body):
 	
 	
 # Call to reset the player when starting a new game
-func start(pos):
+func _start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
