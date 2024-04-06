@@ -15,7 +15,7 @@ var screen_size
 func _ready():
 	#hide()
 	screen_size = get_viewport_rect().size
-	start(Vector2i(0,0))
+	start(Vector2i(80,80))
 
 # Move the player by detecting associated keyboard presses with up, down, etc.
 func _process(delta):
@@ -44,7 +44,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	# Make the player disappear after being hit by a mob then a signal is emitted
-	#hide() 
+	hide() 
 	hit.emit()
 	# Disable the player's collision so that the hit signal is not hit more than once
 	$CollisionShape2D.set_deferred("disabled", true)

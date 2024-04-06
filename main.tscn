@@ -11,10 +11,10 @@ script = ExtResource("1_jmacd")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
-offset_left = -801.0
-offset_top = -250.0
-offset_right = 1198.0
-offset_bottom = 1161.0
+offset_left = -809.0
+offset_top = -244.0
+offset_right = 1190.0
+offset_bottom = 1167.0
 texture = ExtResource("2_mcgo4")
 stretch_mode = 1
 
@@ -22,7 +22,6 @@ stretch_mode = 1
 scale = Vector2(0.45, 0.45)
 y_dim = 31
 x_dim = 31
-starting_coords = null
 
 [node name="Player" parent="." instance=ExtResource("3_7hifg")]
 position = Vector2(-750, -166)
