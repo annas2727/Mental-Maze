@@ -1,9 +1,9 @@
-res://mob.tscn
-res://Mob.gd
 res://player.tscn
 res://main.tscn
-res://player.gd
 res://Main.gd
-res://anxiety_mob.gd
-res://anxiety_mob.tscn
-res://game_singleton.gd
+res://hud.tscn
+res://HUD.gd
+res://player.gd
+res://mob.tscn
+res://popups.gd
+res://popups.tscn

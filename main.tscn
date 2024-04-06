@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgnsoqns6ribq"]
+[gd_scene load_steps=6 format=3 uid="uid://bgnsoqns6ribq"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bgkpj"]
 [ext_resource type="PackedScene" uid="uid://otc41x2js6mu" path="res://mob.tscn" id="2_nwrd7"]
 [ext_resource type="PackedScene" uid="uid://byka7bkmtud12" path="res://player.tscn" id="3_86i4l"]
+[ext_resource type="PackedScene" uid="uid://ch411usoqh6gy" path="res://popups.tscn" id="4_2vucl"]
+[ext_resource type="PackedScene" uid="uid://b4idjc4fi24b" path="res://hud.tscn" id="4_htg8o"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bgkpj")
@@ -19,4 +21,17 @@ color = Color(0.74902, 0.639216, 1, 1)
 
 [node name="Anxiety Mob" parent="." instance=ExtResource("2_nwrd7")]
 
-[connection signal="hit" from="Player" to="." method="game_over"]
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 450)
+
+[node name="popups" parent="." instance=ExtResource("4_2vucl")]
+
+[node name="HUD" parent="." instance=ExtResource("4_htg8o")]
+
+[connection signal="show_screen" from="." to="Player" method="_show_character"]
+[connection signal="hit" from="Player" to="." method="_lose_life"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="finished_read" from="popups" to="." method="_check_levels"]
+[connection signal="start_game" from="HUD" to="." method="_check_start"]

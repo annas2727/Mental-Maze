@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4idjc4fi24b"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_dgc62"]
+[ext_resource type="FontFile" uid="uid://dnnipmexklcup" path="res://manaspc.ttf" id="2_hyuv2"]
+[ext_resource type="FontFile" uid="uid://cg4lw51kbtnip" path="res://karmatic-arcade.regular.ttf" id="3_jqsl2"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_p850d"]
+action = &"button_pressed"
+
+[sub_resource type="Shortcut" id="Shortcut_u6p5x"]
+events = [SubResource("InputEventAction_p850d")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_dgc62")
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -111.5
+offset_top = -72.0
+offset_right = 111.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_hyuv2")
+theme_override_font_sizes/font_size = 56
+shortcut = SubResource("Shortcut_u6p5x")
+text = "Start"
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -575.0
+offset_right = 575.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_hyuv2")
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.259
+anchor_right = 0.5
+anchor_bottom = 0.259
+offset_left = -576.0
+offset_top = -39.832
+offset_right = 574.0
+offset_bottom = 42.168
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+focus_neighbor_top = NodePath("../ScoreLabel")
+focus_neighbor_bottom = NodePath("../Message1")
+theme_override_fonts/font = ExtResource("3_jqsl2")
+theme_override_font_sizes/font_size = 72
+text = "Mental Mazes"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Message1" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -28.0
+offset_right = 575.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_hyuv2")
+theme_override_font_sizes/font_size = 56
+text = "Welcome!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Message2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.617
+anchor_right = 0.5
+anchor_bottom = 0.617
+offset_left = -576.0
+offset_top = -23.816
+offset_right = 574.0
+offset_bottom = 32.184
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_hyuv2")
+theme_override_font_sizes/font_size = 56
+text = "Press Start to Begin"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
