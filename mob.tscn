@@ -1,0 +1,171 @@
+[gd_scene load_steps=19 format=3 uid="uid://otc41x2js6mu"]
+
+[ext_resource type="Texture2D" uid="uid://dtxw428i52whi" path="res://Crab_AttackC.png" id="2_4vloh"]
+[ext_resource type="Texture2D" uid="uid://c7lv0rd23lphf" path="res://Crab_Death.png" id="3_vcr1m"]
+[ext_resource type="Texture2D" uid="uid://oemv3pa7jsql" path="res://Crab_Run.png" id="4_ga5l4"]
+
+[sub_resource type="GDScript" id="GDScript_sphry"]
+script/source = "# Citation: https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
+# Mob Images by Admurin: https://admurin.itch.io/enemy-galore-1
+extends RigidBody2D
+
+
+var min_speed = 50
+var max_speed = 250
+var mob_speed = null
+# Set randomness in the anxiety mob's speed for unexpected actions
+func _set_random_speed():
+	mob_speed = randf_range(min_speed, max_speed)
+	return mob_speed
+
+
+func _physics_process(delta):
+	# Get the player's position from the globally acessible singleton
+	var player_pos = GameSingleton.player_position
+	if player_pos != Vector2():
+		# Calculate the direction vector from the mob to the player
+		var direction = (player_pos - global_position).normalized()
+		linear_velocity = direction * _set_random_speed()
+	
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyk73"]
+atlas = ExtResource("2_4vloh")
+region = Rect2(192, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n64yr"]
+atlas = ExtResource("2_4vloh")
+region = Rect2(0, 96, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvner"]
+atlas = ExtResource("2_4vloh")
+region = Rect2(64, 96, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7o36"]
+atlas = ExtResource("3_vcr1m")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi2nw"]
+atlas = ExtResource("3_vcr1m")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lwu0"]
+atlas = ExtResource("3_vcr1m")
+region = Rect2(0, 96, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpbsr"]
+atlas = ExtResource("4_ga5l4")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxy6i"]
+atlas = ExtResource("4_ga5l4")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvbqn"]
+atlas = ExtResource("4_ga5l4")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0f62"]
+atlas = ExtResource("4_ga5l4")
+region = Rect2(192, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjjru"]
+atlas = ExtResource("4_ga5l4")
+region = Rect2(0, 96, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joo5m"]
+atlas = ExtResource("4_ga5l4")
+region = Rect2(64, 96, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g0uiu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyk73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n64yr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvner")
+}],
+"loop": true,
+"name": &"anxiety_attack",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7o36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi2nw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lwu0")
+}],
+"loop": true,
+"name": &"anxiety_death",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpbsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxy6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvbqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0f62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjjru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joo5m")
+}],
+"loop": true,
+"name": &"anxiety_run",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8lj54"]
+radius = 3.0303
+height = 7.27273
+
+[node name="Anxiety Mob" type="RigidBody2D" groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = SubResource("GDScript_sphry")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_g0uiu")
+animation = &"anxiety_run"
+frame = 5
+frame_progress = 1.0
+speed_scale = 5.0
+offset = Vector2(3, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(3.3, 3.3)
+shape = SubResource("CapsuleShape2D_8lj54")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+rotation = 1.5708
+scale = Vector2(3.3, 3.3)
+shape = SubResource("CapsuleShape2D_8lj54")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]

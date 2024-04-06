@@ -12,7 +12,7 @@ var screen_size
 
 
 
-func _show_character():
+func show_character():
 	screen_size = get_viewport_rect().size
 	_start(screen_size / 2)
 	GameSingleton.player = self

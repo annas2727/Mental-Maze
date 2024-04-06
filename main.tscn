@@ -30,8 +30,8 @@ position = Vector2(240, 450)
 
 [node name="HUD" parent="." instance=ExtResource("4_htg8o")]
 
-[connection signal="show_screen" from="." to="Player" method="_show_character"]
-[connection signal="hit" from="Player" to="." method="_lose_life"]
+[connection signal="show_screen" from="." to="Player" method="show_character"]
+[connection signal="hit" from="Player" to="." method="lose_life"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
-[connection signal="finished_read" from="popups" to="." method="_check_levels"]
-[connection signal="start_game" from="HUD" to="." method="_check_start"]
+[connection signal="finished_read" from="popups" to="." method="check_levels"]
+[connection signal="start_game" from="HUD" to="." method="check_start"]
