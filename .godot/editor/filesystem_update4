@@ -1,0 +1,9 @@
+res://mob.tscn
+res://Mob.gd
+res://player.tscn
+res://main.tscn
+res://player.gd
+res://Main.gd
+res://anxiety_mob.gd
+res://anxiety_mob.tscn
+res://game_singleton.gd
