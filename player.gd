@@ -1,22 +1,20 @@
 # Citation: https://docs.godotengine.org/en/stable/getting_started/first_2d_game/02.player_scene.html
 # Character Images by Antifarea: https://opengameart.org/content/twelve-more-16x18-rpg-character-sprites
-
 extends Area2D
 signal hit
 
-
 # Establish how fast the player will move (pixels/sec)
-@export var speed = 300 
-# Establish screen size of the game window 
+@export var speed = 300  
 var screen_size
 
 # Call when the node enters the scene tree for the first time
 func _ready():
-	#hide()
+	# hide()
 	screen_size = get_viewport_rect().size
 	_start(screen_size / 2)
 	# Use the singleton to assign player for others to access
 	GameSingleton.player = self
+
 
 # Move the player by detecting associated keyboard presses with up, down, etc.
 func _process(delta):
