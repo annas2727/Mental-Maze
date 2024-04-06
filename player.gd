@@ -1,8 +1,9 @@
 # Citation: https://docs.godotengine.org/en/stable/getting_started/first_2d_game/02.player_scene.html
 # Character Images by Antifarea: https://opengameart.org/content/twelve-more-16x18-rpg-character-sprites
 
-extends Area2D
+extends CharacterBody2D
 signal hit
+signal move
 
 
 # Establish how fast the player will move (pixels/sec)
@@ -13,20 +14,27 @@ var screen_size
 
 # Call when the node enters the scene tree for the first time
 func _ready():
-	#hide()
+	# hide()
 	screen_size = get_viewport_rect().size
-	start(Vector2i(80,80))
+	start(screen_size / 2)
+
+
 
 # Move the player by detecting associated keyboard presses with up, down, etc.
 func _process(delta):
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("ui_right"):
+
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		print("I collided with ", collision.get_collider().name)
+		
+	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1	
 	position += velocity * delta * speed
 	
@@ -39,19 +47,33 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "walk_up"
 	elif velocity.y > 0:
 		$AnimatedSprite2D.animation = "walk_down"
-	
-	
+	if abs(velocity.x) > 1 or abs(velocity.y) > 1: 
+		velocity = 0
+		
+		
 
+		
 func _on_body_entered(body):
+
 	# Make the player disappear after being hit by a mob then a signal is emitted
-	hide() 
+	#hide() 
 	hit.emit()
 	# Disable the player's collision so that the hit signal is not hit more than once
 	$CollisionShape2D.set_deferred("disabled", true)
 	
+func _on_Area2D_area_entered(area):
+	if area.get_parent().name.begins_with("TileMap"):
+		print("Collided")
+	pass
 	
+	
+
 # Call to reset the player when starting a new game
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+	
+
+
+	move.emit()	

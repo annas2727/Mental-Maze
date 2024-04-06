@@ -1,7 +1,10 @@
-res://player.tscn
 res://node.tscn
 res://tile_map.tscn
 res://main.tscn
-res://maze_gen.gd
+res://player.tscn
+res://test.tscn
 res://Camera2D.gd
+res://maze_gen.gd
+res://simple_label.tscn
+res://Globals.gd
 res://player.gd

@@ -1,4 +1,5 @@
-TextureRect
+CharacterBody2D
 TileMap
+TextureRect
 Sprite2D
 Node
