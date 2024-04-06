@@ -12,12 +12,11 @@ var screen_size
 
 # Call when the node enters the scene tree for the first time
 func _ready():
-	# hide()
+	#hide()
 	screen_size = get_viewport_rect().size
 	_start(screen_size / 2)
 	# Use the singleton to assign player for others to access
 	GameSingleton.player = self
-
 
 # Move the player by detecting associated keyboard presses with up, down, etc.
 func _process(delta):
