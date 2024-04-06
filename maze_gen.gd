@@ -4,8 +4,8 @@ class_name MazeGen
 
 var starting_pos = Vector2i()
 const main_layer = 0
-const normal_wall_atlas_coords = Vector2i(10, 1)
-const walkable_atlas_coords = Vector2i(9, 4)
+const normal_wall_atlas_coords = Vector2i(10, 2)
+const walkable_atlas_coords = Vector2i(10, 40000)
 const SOURCE_ID = 0
 var spot_to_letter = {}
 var spot_to_label = {}

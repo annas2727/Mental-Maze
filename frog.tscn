@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddnvamtyfaic6"]
+
+[ext_resource type="Script" path="res://frog.gd" id="1_l50b2"]
+[ext_resource type="Texture2D" uid="uid://do6acjtk8x8gr" path="res://frog.png" id="1_n6214"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdul4"]
+size = Vector2(980.392, 780)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_l50b2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(68, 56)
+scale = Vector2(0.03, 0.029)
+texture = ExtResource("1_n6214")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(-0.00012207, 9.99988)
+shape = SubResource("RectangleShape2D_qdul4")
