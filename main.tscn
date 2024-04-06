@@ -1,46 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqwdvyjmtyhhs"]
+[gd_scene load_steps=3 format=3 uid="uid://duswqlk453sk7"]
 
-[ext_resource type="PackedScene" uid="uid://yi1yq2vtobwl" path="res://tile_map.tscn" id="1_8d4oo"]
+[ext_resource type="PackedScene" uid="uid://4ioamq3p04er" path="res://tile_map.tscn" id="1_8d4oo"]
 [ext_resource type="Script" path="res://main.gd" id="1_jmacd"]
-[ext_resource type="Texture2D" uid="uid://tcx1sgjtcvim" path="res://blue.png" id="2_gxi2c"]
-[ext_resource type="Texture2D" uid="uid://do6acjtk8x8gr" path="res://frog.png" id="4_rejol"]
-[ext_resource type="PackedScene" uid="uid://ddnvamtyfaic6" path="res://frog.tscn" id="4_vq4j3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ie01i"]
-size = Vector2(1000, 800)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_jmacd")
 
-[node name="Node" type="Node" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="Node"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 20.0
-offset_right = 9.0
-offset_bottom = 88.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_gxi2c")
-stretch_mode = 1
-
-[node name="TileMap" parent="Node" instance=ExtResource("1_8d4oo")]
-scale = Vector2(0.45, 0.45)
+[node name="TileMap" parent="." instance=ExtResource("1_8d4oo")]
 y_dim = 31
 x_dim = 31
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("4_vq4j3")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(32, 46)
-scale = Vector2(0.03, 0.03)
-shape = SubResource("RectangleShape2D_ie01i")
-
-[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D"]
-z_index = 2
-position = Vector2(48, 45)
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("4_rejol")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

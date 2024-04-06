@@ -1,7 +1,4 @@
-CollisionShape2D
+TileMap
+TextureRect
 Sprite2D
 Node
-CharacterBody2D
-TextureRect
-Node2D
-TileMap
