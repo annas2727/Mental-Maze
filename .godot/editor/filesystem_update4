@@ -1,12 +1,6 @@
-res://simple_label.tscn
-res://node.tscn
-res://maze_gen.gd
-res://main.gd
-res://tileset.tscn
-res://Label.gd
 res://player.tscn
-res://allow_loops.gd
-res://Globals.gd
+res://node.tscn
 res://tile_map.tscn
-res://simple_label 2.tscn
 res://main.tscn
+res://main.gd
+res://player.gd

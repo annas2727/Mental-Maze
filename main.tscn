@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://duswqlk453sk7"]
+[gd_scene load_steps=4 format=3 uid="uid://th5im2tyeqpe"]
 
-[ext_resource type="PackedScene" uid="uid://4ioamq3p04er" path="res://tile_map.tscn" id="1_8d4oo"]
+[ext_resource type="PackedScene" uid="uid://cvo70qd07iu1" path="res://tile_map.tscn" id="1_8d4oo"]
 [ext_resource type="Script" path="res://main.gd" id="1_jmacd"]
+[ext_resource type="PackedScene" uid="uid://dr6tdr34fj4bs" path="res://player.tscn" id="3_7hifg"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_jmacd")
@@ -10,4 +11,4 @@ script = ExtResource("1_jmacd")
 y_dim = 31
 x_dim = 31
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_7hifg")]

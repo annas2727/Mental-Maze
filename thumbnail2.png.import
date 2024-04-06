@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://05x5jcwt3xs7"
-path="res://.godot/imported/voxelExpansion_tilesheet.png-5c660119a35f8f9520f397723a19f0af.ctex"
+uid="uid://bb5gylgjywf5s"
+path="res://.godot/imported/thumbnail2.png-23dce9733e01833247f27b7e09c4fad8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://voxelExpansion_tilesheet.png"
-dest_files=["res://.godot/imported/voxelExpansion_tilesheet.png-5c660119a35f8f9520f397723a19f0af.ctex"]
+source_file="res://thumbnail2.png"
+dest_files=["res://.godot/imported/thumbnail2.png-23dce9733e01833247f27b7e09c4fad8.ctex"]
 
 [params]
 

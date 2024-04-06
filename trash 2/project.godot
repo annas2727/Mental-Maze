@@ -21,8 +21,7 @@ Globals="*res://Globals.gd"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=800
+window/size/mode=2
 
 [input]
 
@@ -39,6 +38,5 @@ show_hud={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.407843, 0.654902, 0.831373, 1)

@@ -10,10 +10,10 @@ const SOURCE_ID = 0
 var spot_to_letter = {}
 var spot_to_label = {}
 var current_letter_num = 65
-const label = preload("res://simple_label.tscn")
+#const label = preload("res://simple_label.tscn")
 
-@export var y_dim = 35
-@export var x_dim = 35
+@export var y_dim = 15
+@export var x_dim = 25
 @export var starting_coords = Vector2i(0, 0)
 var adj4 = [
 	Vector2i(-1, 0),
@@ -24,8 +24,8 @@ var adj4 = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	y_dim = Globals.grid_size
-	x_dim = Globals.grid_size
+	y_dim = Globals.grid_size_y
+	x_dim = Globals.grid_size_x
 	Globals.letters_to_show.clear()
 	place_border()
 	dfs(starting_coords)
@@ -115,23 +115,9 @@ func dfs(start: Vector2i):
 				else:
 					found_new_path = true
 					fringe.append(new_pos)
-					if Globals.show_labels:
-						if new_pos not in spot_to_letter:
-							spot_to_letter[new_pos] = char(current_letter_num)
-							current_letter_num += 1
-						Globals.letters_to_show.push_front(spot_to_letter[new_pos])	
-						place_label(new_pos, spot_to_letter[new_pos])
 					
+				
 		#if we hit a dead end or are at a cross section
 		if not found_new_path:
 			place_wall(current)
 
-func place_label(pos: Vector2i, text: String):
-	var current_label: Label = label.instantiate()
-	current_label.text = text
-	current_label.name = text
-	add_child.call_deferred(current_label)
-	if pos not in spot_to_label:
-		spot_to_label[pos] = []
-	spot_to_label[pos].append(current_label)
-	current_label.position = map_to_local(pos) - (Vector2i(64, 50)  / 2.0)
