@@ -92,7 +92,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.43051e-06, 0)
-scale = Vector2(3.375, 3)
+scale = Vector2(1, 0.889)
 sprite_frames = SubResource("SpriteFrames_alulf")
 animation = &"walk_up"
 

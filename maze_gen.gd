@@ -1,19 +1,18 @@
 extends TileMap
 class_name MazeGen
 
-
 var starting_pos = Vector2i()
 const main_layer = 0
-const normal_wall_atlas_coords = Vector2i(10, 1)
-const walkable_atlas_coords = Vector2i(9, 4)
+const normal_wall_atlas_coords = Vector2i(12, 0)
+#const walkable_atlas_coords = Vector2i(9, 400)
 const SOURCE_ID = 0
 var spot_to_letter = {}
 var spot_to_label = {}
 var current_letter_num = 65
 const label = preload("res://simple_label.tscn")
 
-@export var y_dim = 35
-@export var x_dim = 35
+@export var y_dim = 15
+@export var x_dim = 25
 @export var starting_coords = Vector2i(0, 0)
 var adj4 = [
 	Vector2i(-1, 0),
@@ -22,10 +21,12 @@ var adj4 = [
 	Vector2i(0, -1),
 ]
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	y_dim = Globals.grid_size
-	x_dim = Globals.grid_size
+	y_dim = Globals.grid_size_x
+	x_dim = Globals.grid_size_x
 	Globals.letters_to_show.clear()
 	place_border()
 	dfs(starting_coords)

@@ -1,14 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://th5im2tyeqpe"]
+[gd_scene load_steps=5 format=3 uid="uid://th5im2tyeqpe"]
 
 [ext_resource type="PackedScene" uid="uid://cvo70qd07iu1" path="res://tile_map.tscn" id="1_8d4oo"]
 [ext_resource type="Script" path="res://main.gd" id="1_jmacd"]
+[ext_resource type="Texture2D" uid="uid://gwym0q8s68vy" path="res://purple.png" id="2_mcgo4"]
 [ext_resource type="PackedScene" uid="uid://dr6tdr34fj4bs" path="res://player.tscn" id="3_7hifg"]
 
 [node name="main" type="Node2D"]
+position = Vector2(809, 244)
 script = ExtResource("1_jmacd")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -801.0
+offset_top = -250.0
+offset_right = 1198.0
+offset_bottom = 1161.0
+texture = ExtResource("2_mcgo4")
+stretch_mode = 1
+
 [node name="TileMap" parent="." instance=ExtResource("1_8d4oo")]
+scale = Vector2(0.45, 0.45)
 y_dim = 31
 x_dim = 31
+starting_coords = null
 
 [node name="Player" parent="." instance=ExtResource("3_7hifg")]
+position = Vector2(-750, -166)

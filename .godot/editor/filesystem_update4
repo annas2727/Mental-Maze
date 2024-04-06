@@ -4,3 +4,6 @@ res://tile_map.tscn
 res://main.tscn
 res://main.gd
 res://player.gd
+res://Globals.gd
+res://maze_gen.gd
+res://simple_label.tscn

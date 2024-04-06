@@ -1,6 +1,6 @@
 extends Node
 
-var grid_size = 15
+var grid_size_x = 35
 var step_delay = 0
 var allow_loops = false
 var letters_to_show = []
