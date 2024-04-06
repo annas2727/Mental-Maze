@@ -1,0 +1,12 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1712368365
+default_env.tres::Environment::-1::1712363127::0::1::::<><>::
+icon.png::CompressedTexture2D::8833339238327565327::1712363127::1712366201::1::::<><>::
+icon.svg::CompressedTexture2D::1206878661734405548::1712358350::1712358769::1::::<><>::
+iso_roads.tres::TileSet::-1::1712363127::0::1::::<><>::res://assets/isometric_roads/crossroad.png<>res://assets/isometric_roads/crossroadNSW.png<>res://assets/isometric_roads/roadEW.png<>res://assets/isometric_roads/endW.png<>res://assets/isometric_roads/roadES.png<>res://assets/isometric_roads/endS.png<>res://assets/isometric_roads/endE.png<>res://assets/isometric_roads/grass.png<>res://assets/isometric_roads/crossroadNEW.png<>res://assets/isometric_roads/roadNW.png<>res://assets/isometric_roads/crossroadNES.png<>res://assets/isometric_roads/roadNS.png<>res://assets/isometric_roads/roadNE.png<>res://assets/isometric_roads/endN.png<>res://assets/isometric_roads/crossroadESW.png<>res://assets/isometric_roads/roadSW.png
+Maze.tscn::PackedScene::494022137892944743::1712368264::0::1::::<><>::res://road_tiles.tres<>res://TileMap.gd
+node.tscn::PackedScene::7456610235224822456::1712363146::0::1::::<><>::
+road_tiles.tres::TileSet::3331625733909908355::1712365410::0::1::::<><>::
+TileMap.gd::GDScript::-1::1712367250::0::1::::<>Node2D<>::
+::res://assets/::1712366233
+spritesheet.png::CompressedTexture2D::6111075516623039884::1712363127::1712366201::1::::<><>::

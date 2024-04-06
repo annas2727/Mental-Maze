@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hbkqcer8cpdf"]
+
+[ext_resource type="TileSet" uid="uid://bnp4nh1o174x8" path="res://road_tiles.tres" id="1"]
+[ext_resource type="Script" path="res://TileMap.gd" id="2_s5643"]
+
+[node name="Maze" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1")
+format = 2
+script = ExtResource("2_s5643")
