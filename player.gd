@@ -28,7 +28,7 @@ func _process(delta):
 	# Use the singleton to assign player position for others to access
 	GameSingleton.player_position = global_position
 
-	var collision = move_and_collide(velocity * delta)
+	var collision := move_and_collide(velocity * delta)
 	if collision:
 		#print("I collided with ", collision.get_collider().name)
 		pass
@@ -53,13 +53,19 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "walk_down"
 	if abs(velocity.x) > 1 or abs(velocity.y) > 1: 
 		velocity = 0
-		
+
+
+
+
+	
 func _on_body_entered(body):
 	# Make the player disappear after being hit by a mob then a signal is emitted
-	# hide() 
+	print(body, " entered")
+	#hide() 
 	hit.emit()
 	# Disable the player's collision so that the hit signal is not hit more than once
 	$CollisionShape2D.set_deferred("disabled", true)
+
 
 # Call to reset the player when starting a new game
 func _start(pos):

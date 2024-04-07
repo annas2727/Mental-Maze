@@ -14,6 +14,10 @@ script = ExtResource("1_bgkpj")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -9087.0
+offset_top = -6124.0
+offset_right = 10709.0
+offset_bottom = 6815.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.74902, 0.639216, 1, 1)
@@ -40,7 +44,7 @@ position = Vector2(360, 590)
 script = ExtResource("4_i0ydt")
 
 [node name="SpawnTimer" type="Timer" parent="MobSpawner"]
-wait_time = 7.0
+wait_time = 5.0
 
 [node name="HUD" parent="." instance=ExtResource("6_h688j")]
 
