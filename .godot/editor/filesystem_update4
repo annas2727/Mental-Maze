@@ -8,3 +8,5 @@ res://maze_gen.gd
 res://MobSpawner.gd
 res://player.gd
 res://Main.gd
+res://game_singleton.gd
+res://Globals.gd

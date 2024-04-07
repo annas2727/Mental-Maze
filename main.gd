@@ -10,12 +10,13 @@ var array = [randex]
 signal show_screen
 
 var hud_enabled = true
-const maze = preload("res://tile_map.tscn")
+var maze = load("res://tile_map.tscn")
 
 
 func clear_screen():
 	get_tree().call_group("mobs", "queue_free")
 	$Player.hide()
+	$TileMap.clear()
 
 
 func start_game():
@@ -56,6 +57,7 @@ func next_level():
 	$popups.hide_popup()
 	lost_lvl = false
 	$HUD.update_score(score)
+	maze = load("res://tile_map.tscn")
 	show_screen.emit()
 	$Player._start($StartPosition.position)
 	$ScoreTimer.start()
@@ -68,6 +70,8 @@ func next_level():
 func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)
+	if Globals.was_hit == true:
+		lose_life()
 
 
 func exit_found():
@@ -85,6 +89,7 @@ func exit_found():
 func lose_life():
 	$MobSpawner/SpawnTimer.set_paused(true)
 	$ScoreTimer.stop()
+	Globals.was_hit = false
 	clear_screen()
 	lives -= 1
 	lost_lvl = true

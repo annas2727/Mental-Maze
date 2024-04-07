@@ -9,3 +9,5 @@ var letters_to_show = []
 var show_labels = false
 
 signal fringe_changed
+
+var was_hit = false

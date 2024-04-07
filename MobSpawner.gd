@@ -5,7 +5,10 @@ extends Node2D
 func _on_spawn_timer_timeout():
 	# Instantiate the mob scene for spawning 
 	var mob_scene = load('res://mob.tscn')
+	
 	var mob_instantiate = mob_scene.instantiate()
+	mob_instantiate.set_contact_monitor(true)
+	mob_instantiate.set_max_contacts_reported(10)
 	self.add_child(mob_instantiate)
 
 	# Select one of the various mob spawn positions randomly to spawn the mob
@@ -15,6 +18,8 @@ func _on_spawn_timer_timeout():
 		var spawn_position = spawn_points[random_index].global_position
 		mob_instantiate.global_position = spawn_position
 	$SpawnTimer.start()
+	
+
 		
 # A mob spawns every 7 seconds
 func _ready():
