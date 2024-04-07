@@ -1,13 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://duswqlk453sk7"]
+[gd_scene load_steps=5 format=3 uid="uid://bgnsoqns6ribq"]
 
-[ext_resource type="PackedScene" uid="uid://4ioamq3p04er" path="res://tile_map.tscn" id="1_8d4oo"]
-[ext_resource type="Script" path="res://main.gd" id="1_jmacd"]
+[ext_resource type="Script" path="res://Main.gd" id="1_bgkpj"]
+[ext_resource type="PackedScene" uid="uid://otc41x2js6mu" path="res://mob.tscn" id="2_nwrd7"]
+[ext_resource type="PackedScene" uid="uid://byka7bkmtud12" path="res://player.tscn" id="3_86i4l"]
+[ext_resource type="Script" path="res://MobSpawner.gd" id="4_i0ydt"]
 
-[node name="main" type="Node2D"]
-script = ExtResource("1_jmacd")
+[node name="Main" type="Node"]
+script = ExtResource("1_bgkpj")
 
-[node name="TileMap" parent="." instance=ExtResource("1_8d4oo")]
-y_dim = 31
-x_dim = 31
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.74902, 0.639216, 1, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_86i4l")]
+
+[node name="Anxiety Mob" parent="." instance=ExtResource("2_nwrd7")]
+
+[node name="MobSpawns" type="Node" parent="."]
+
+[node name="MobSpawn1" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
+position = Vector2(139, 493)
+
+[node name="MobSpawn2" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
+position = Vector2(1016, 201)
+
+[node name="MobSpawn3" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
+position = Vector2(306, 131)
+
+[node name="ModSpawn4" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
+position = Vector2(764, 458)
+
+[node name="MobSpawner" type="Node2D" parent="."]
+script = ExtResource("4_i0ydt")
+
+[node name="SpawnTimer" type="Timer" parent="MobSpawner"]
+wait_time = 7.0
+autostart = true
+
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="MobSpawner/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="MobSpawner/SpawnTimer" to="MobSpawner" method="_on_spawn_timer_timeout"]

@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://otc41x2js6mu"]
+
+[ext_resource type="Texture2D" uid="uid://oemv3pa7jsql" path="res://Crab_Run.png" id="4_ga5l4"]
+
+[sub_resource type="GDScript" id="GDScript_sphry"]
+script/source = "# Citation: https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
+# Citation: https://docs.godotengine.org/en/stable/getting_started/first_2d_game/04.creating_the_enemy.html
+# Mob Images by Admurin: https://admurin.itch.io/enemy-galore-1
+extends RigidBody2D
+
+var screen_size = get_viewport_rect().size
+var min_speed = 50
+var max_speed = 250
+var mob_speed = 0
+# Set randomness in the anxiety mob's speed for unexpected actions
+func _set_random_speed():
+	mob_speed = randf_range(min_speed, max_speed)
+	return mob_speed
+
+
+func _physics_process(delta):
+	# Get the player's position from the globally acessible singleton
+	var player_pos = GameSingleton.player_position
+	$AnxietyAnimations.play(\"anxiety_walk\")
+	if player_pos != Vector2():
+		# Calculate the direction vector from the mob to the player
+		var direction = (player_pos - global_position).normalized()
+		linear_velocity = direction * _set_random_speed()
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8lj54"]
+radius = 3.0303
+height = 7.27273
+
+[sub_resource type="Animation" id="Animation_nm1jn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_x2tbl"]
+resource_name = "anxiety_death"
+
+[sub_resource type="Animation" id="Animation_kosel"]
+resource_name = "anxiety_walk"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.4, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 0, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_riw26"]
+_data = {
+"RESET": SubResource("Animation_nm1jn"),
+"anxiety_death": SubResource("Animation_x2tbl"),
+"anxiety_walk": SubResource("Animation_kosel")
+}
+
+[node name="Anxiety Mob" type="RigidBody2D" groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = SubResource("GDScript_sphry")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(3.3, 3.3)
+shape = SubResource("CapsuleShape2D_8lj54")
+
+[node name="AnxietyWalkSprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("4_ga5l4")
+offset = Vector2(3, 0)
+hframes = 4
+vframes = 2
+
+[node name="AnxietyAnimations" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnxietyWalkSprite")
+libraries = {
+"": SubResource("AnimationLibrary_riw26")
+}
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+rotation = 1.5708
+scale = Vector2(3.3, 3.3)
+shape = SubResource("CapsuleShape2D_8lj54")
+
+[connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_entered"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]

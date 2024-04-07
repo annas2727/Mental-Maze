@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dr6tdr34fj4bs"]
+[gd_scene load_steps=13 format=3 uid="uid://byka7bkmtud12"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_n0yeq"]
 [ext_resource type="Texture2D" uid="uid://n8ohc7onas8v" path="res://Character.png" id="2_c3qmv"]
@@ -87,6 +87,7 @@ size = Vector2(46, 51)
 
 [node name="Player" type="Area2D"]
 position = Vector2(0, 5)
+collision_layer = 3
 script = ExtResource("1_n0yeq")
 metadata/_edit_group_ = true
 
