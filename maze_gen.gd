@@ -1,10 +1,11 @@
+# Citation: https://github.com/Goldenlion5648/GodotMazeGenerationVisualizer
+
 extends TileMap
 class_name MazeGen
 
-
 var starting_pos = Vector2i()
 const main_layer = 0
-const normal_wall_atlas_coords = Vector2i(10, 4)
+const normal_wall_atlas_coords = Vector2i(9, 4)
 const walkable_atlas_coords = Vector2i(5, 1000)
 const SOURCE_ID = 0
 var spot_to_letter = {}

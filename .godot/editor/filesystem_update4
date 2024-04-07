@@ -10,3 +10,5 @@ res://player.gd
 res://Main.gd
 res://game_singleton.gd
 res://Globals.gd
+res://HUD.gd
+res://popups.tscn

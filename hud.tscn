@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cg4lw51kbtnip" path="res://karmatic-arcade.regular.ttf" id="3_jqsl2"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_p850d"]
-action = &"button_pressed"
+action = &"button_key"
 
 [sub_resource type="Shortcut" id="Shortcut_u6p5x"]
 events = [SubResource("InputEventAction_p850d")]
