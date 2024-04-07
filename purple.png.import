@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://05x5jcwt3xs7"
-path="res://.godot/imported/voxelExpansion_tilesheet.png-5c660119a35f8f9520f397723a19f0af.ctex"
+uid="uid://gwym0q8s68vy"
+path="res://.godot/imported/purple.png-993a3fae7325db95475822da4ec84ea6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://voxelExpansion_tilesheet.png"
-dest_files=["res://.godot/imported/voxelExpansion_tilesheet.png-5c660119a35f8f9520f397723a19f0af.ctex"]
+source_file="res://purple.png"
+dest_files=["res://.godot/imported/purple.png-993a3fae7325db95475822da4ec84ea6.ctex"]
 
 [params]
 
