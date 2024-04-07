@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch411usoqh6gy"]
+
+[ext_resource type="Script" path="res://popups.gd" id="1_t2ih3"]
+[ext_resource type="FontFile" uid="uid://dnnipmexklcup" path="res://manaspc.ttf" id="2_w2cea"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_0eptv"]
+action = &"button_pressed"
+
+[sub_resource type="Shortcut" id="Shortcut_7ph4n"]
+events = [SubResource("InputEventAction_0eptv")]
+
+[node name="popups" type="CanvasLayer"]
+script = ExtResource("1_t2ih3")
+
+[node name="Popup" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -325.0
+offset_right = 575.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_w2cea")
+theme_override_font_sizes/font_size = 48
+text = "\"Anxiety disorders develop from a complex set of risk factors, including genetics, brain chemistry, personality, and life events\" (ADAA)."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NextButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_w2cea")
+theme_override_font_sizes/font_size = 56
+shortcut = SubResource("Shortcut_7ph4n")
+text = "Next"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

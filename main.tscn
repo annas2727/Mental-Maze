@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgnsoqns6ribq"]
+[gd_scene load_steps=7 format=3 uid="uid://bgnsoqns6ribq"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bgkpj"]
-[ext_resource type="PackedScene" uid="uid://otc41x2js6mu" path="res://mob.tscn" id="2_nwrd7"]
 [ext_resource type="PackedScene" uid="uid://byka7bkmtud12" path="res://player.tscn" id="3_86i4l"]
 [ext_resource type="Script" path="res://MobSpawner.gd" id="4_i0ydt"]
+[ext_resource type="PackedScene" uid="uid://cvo70qd07iu1" path="res://tile_map.tscn" id="5_sm4wp"]
+[ext_resource type="PackedScene" uid="uid://be7o15367excn" path="res://hud.tscn" id="6_h688j"]
+[ext_resource type="PackedScene" path="res://popups.tscn" id="7_fpen2"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bgkpj")
@@ -16,31 +18,44 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.74902, 0.639216, 1, 1)
 
-[node name="Player" parent="." instance=ExtResource("3_86i4l")]
+[node name="TileMap" parent="." instance=ExtResource("5_sm4wp")]
 
-[node name="Anxiety Mob" parent="." instance=ExtResource("2_nwrd7")]
+[node name="Player" parent="." instance=ExtResource("3_86i4l")]
 
 [node name="MobSpawns" type="Node" parent="."]
 
 [node name="MobSpawn1" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
-position = Vector2(139, 493)
+position = Vector2(471, 432)
 
 [node name="MobSpawn2" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
-position = Vector2(1016, 201)
+position = Vector2(226, 809)
 
 [node name="MobSpawn3" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
-position = Vector2(306, 131)
+position = Vector2(892, 511)
 
 [node name="ModSpawn4" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
-position = Vector2(764, 458)
+position = Vector2(360, 590)
 
 [node name="MobSpawner" type="Node2D" parent="."]
 script = ExtResource("4_i0ydt")
 
 [node name="SpawnTimer" type="Timer" parent="MobSpawner"]
 wait_time = 7.0
-autostart = true
 
-[connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="timeout" from="MobSpawner/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[node name="HUD" parent="." instance=ExtResource("6_h688j")]
+
+[node name="popups" parent="." instance=ExtResource("7_fpen2")]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(900, 951)
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[connection signal="show_screen" from="." to="." method="show_character"]
+[connection signal="show_screen" from="." to="TileMap" method="_show_maze"]
+[connection signal="show_screen" from="." to="MobSpawner" method="_on_spawn_timer_timeout"]
+[connection signal="hit" from="Player" to="." method="lose_life"]
 [connection signal="timeout" from="MobSpawner/SpawnTimer" to="MobSpawner" method="_on_spawn_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="check_start"]
+[connection signal="finished_read" from="popups" to="." method="check_levels"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

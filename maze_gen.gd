@@ -4,16 +4,16 @@ class_name MazeGen
 
 var starting_pos = Vector2i()
 const main_layer = 0
-const normal_wall_atlas_coords = Vector2i(10, 1)
-const walkable_atlas_coords = Vector2i(9, 4)
+const normal_wall_atlas_coords = Vector2i(10, 4)
+const walkable_atlas_coords = Vector2i(5, 1000)
 const SOURCE_ID = 0
 var spot_to_letter = {}
 var spot_to_label = {}
 var current_letter_num = 65
 #const label = preload("res://simple_label.tscn")
 
-@export var y_dim = 15
-@export var x_dim = 25
+@export var y_dim = 35
+@export var x_dim = 35
 @export var starting_coords = Vector2i(0, 0)
 var adj4 = [
 	Vector2i(-1, 0),
@@ -24,16 +24,18 @@ var adj4 = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass
+
+func _show_maze():
 	y_dim = Globals.grid_size_y
 	x_dim = Globals.grid_size_x
 	Globals.letters_to_show.clear()
 	place_border()
 	dfs(starting_coords)
-	
 
 func _input(event: InputEvent) -> void:
 	pass
-#	if Input.is_action_just_pressed("reset"):
+#	if Input.iaction_just_pressed("reset"):
 #		get_tree().reload_current_scene()
 	
 	
@@ -120,4 +122,3 @@ func dfs(start: Vector2i):
 		#if we hit a dead end or are at a cross section
 		if not found_new_path:
 			place_wall(current)
-

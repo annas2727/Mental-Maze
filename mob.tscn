@@ -28,9 +28,8 @@ func _physics_process(delta):
 		linear_velocity = direction * _set_random_speed()
 "
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8lj54"]
-radius = 3.0303
-height = 7.27273
+[sub_resource type="CircleShape2D" id="CircleShape2D_pvbu7"]
+radius = 3.86289
 
 [sub_resource type="Animation" id="Animation_nm1jn"]
 length = 0.001
@@ -75,15 +74,16 @@ _data = {
 }
 
 [node name="Anxiety Mob" type="RigidBody2D" groups=["mobs"]]
-collision_mask = 0
+collision_layer = 3
 gravity_scale = 0.0
 script = SubResource("GDScript_sphry")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.500005, 20.5)
 rotation = 1.5708
 scale = Vector2(3.3, 3.3)
-shape = SubResource("CapsuleShape2D_8lj54")
+shape = SubResource("CircleShape2D_pvbu7")
 
 [node name="AnxietyWalkSprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -97,16 +97,3 @@ root_node = NodePath("../AnxietyWalkSprite")
 libraries = {
 "": SubResource("AnimationLibrary_riw26")
 }
-
-[node name="EnemyDetectionArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-rotation = 1.5708
-scale = Vector2(3.3, 3.3)
-shape = SubResource("CapsuleShape2D_8lj54")
-
-[connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_entered"]
-[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
-[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
