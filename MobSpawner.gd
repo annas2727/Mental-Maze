@@ -2,14 +2,6 @@
 extends Node2D
 
 
-func _start_spawning():
-	$StartTimer.start()
-
-
-func _on_start_timer_timeout():
-	$SpawnTimer.start()
-
-
 func _on_spawn_timer_timeout():
 	# Instantiate the mob scene for spawning 
 	var mob_scene = load('res://mob.tscn')
