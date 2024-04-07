@@ -44,8 +44,8 @@ func next_level():
 	$Player._start($StartPosition.position)
 	$ScoreTimer.start()
 	
-	await get_tree().create_timer(3.0).timeout
-	exit_found()
+	#await get_tree().create_timer(15.0).timeout
+	#exit_found()
 
 
 func _on_score_timer_timeout():
@@ -68,7 +68,10 @@ func lose_life():
 	clear_screen()
 	lives -= 1
 	lost_lvl = true
-
+	$popups.show_popup(randex)
+	while (array.find(randex) != -1):
+		randex = randi_range(0, 6)
+	array.push_back(randex)
 
 
 func check_levels():
@@ -97,5 +100,4 @@ func check_start():
 		new_game()
 	else:
 		next_level()
-
 

@@ -1,20 +1,17 @@
 # Citation: https://docs.godotengine.org/en/stable/getting_started/first_2d_game/02.player_scene.html
 # Character Images by Antifarea: https://opengameart.org/content/twelve-more-16x18-rpg-character-sprites
-
 extends Area2D
 signal hit
 
-
 # Establish how fast the player will move (pixels/sec)
-@export var speed = 300 
-# Establish screen size of the game window 
+@export var speed = 300  
 var screen_size
 
-
-
+# Reveals character on screen when signaled
 func show_character():
 	screen_size = get_viewport_rect().size
 	_start(screen_size / 2)
+	# Use the singleton to assign player for others to access
 	GameSingleton.player = self
 
 
@@ -57,13 +54,11 @@ func _start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-
+	
+	
 # Call when the node enters the scene tree for the first time
 func _ready():
+	# Hides character until it is time for them to appear
 	hide()
-	#screen_size = get_viewport_rect().size
-	#_start(screen_size / 2)
-	# Use the singleton to assign player for others to access
-	#GameSingleton.player = self
 	$CollisionShape2D.set_deferred("disabled", true)
-	#pass
+

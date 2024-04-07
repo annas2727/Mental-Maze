@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4idjc4fi24b"]
+[gd_scene load_steps=6 format=3 uid="uid://ci4y8bkjvixw5"]
 
 [ext_resource type="Script" path="res://HUD.gd" id="1_dgc62"]
 [ext_resource type="FontFile" uid="uid://dnnipmexklcup" path="res://manaspc.ttf" id="2_hyuv2"]

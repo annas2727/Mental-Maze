@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgnsoqns6ribq"]
+[gd_scene load_steps=7 format=3 uid="uid://bgnsoqns6ribq"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bgkpj"]
 [ext_resource type="PackedScene" uid="uid://otc41x2js6mu" path="res://mob.tscn" id="2_nwrd7"]
 [ext_resource type="PackedScene" uid="uid://byka7bkmtud12" path="res://player.tscn" id="3_86i4l"]
-[ext_resource type="PackedScene" uid="uid://ch411usoqh6gy" path="res://popups.tscn" id="4_2vucl"]
-[ext_resource type="PackedScene" uid="uid://b4idjc4fi24b" path="res://hud.tscn" id="4_htg8o"]
+[ext_resource type="Script" path="res://MobSpawner.gd" id="4_i0ydt"]
+[ext_resource type="PackedScene" path="res://popups.tscn" id="5_2j58s"]
+[ext_resource type="PackedScene" uid="uid://ci4y8bkjvixw5" path="res://hud.tscn" id="6_3085q"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bgkpj")
@@ -19,19 +20,45 @@ color = Color(0.74902, 0.639216, 1, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_86i4l")]
 
-[node name="Anxiety Mob" parent="." instance=ExtResource("2_nwrd7")]
-
 [node name="ScoreTimer" type="Timer" parent="."]
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
 
-[node name="popups" parent="." instance=ExtResource("4_2vucl")]
+[node name="Anxiety Mob" parent="." instance=ExtResource("2_nwrd7")]
 
-[node name="HUD" parent="." instance=ExtResource("4_htg8o")]
+[node name="MobSpawns" type="Node" parent="."]
+
+[node name="MobSpawn1" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
+position = Vector2(139, 493)
+
+[node name="MobSpawn2" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
+position = Vector2(1016, 201)
+
+[node name="MobSpawn3" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
+position = Vector2(306, 131)
+
+[node name="ModSpawn4" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
+position = Vector2(764, 458)
+
+[node name="MobSpawner" type="Node2D" parent="."]
+script = ExtResource("4_i0ydt")
+
+[node name="StartTimer" type="Timer" parent="MobSpawner"]
+one_shot = true
+
+[node name="SpawnTimer" type="Timer" parent="MobSpawner"]
+wait_time = 7.0
+
+[node name="popups" parent="." instance=ExtResource("5_2j58s")]
+
+[node name="HUD" parent="." instance=ExtResource("6_3085q")]
 
 [connection signal="show_screen" from="." to="Player" method="show_character"]
+[connection signal="show_screen" from="." to="MobSpawner" method="_start_spawning"]
 [connection signal="hit" from="Player" to="." method="lose_life"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="MobSpawner/StartTimer" to="MobSpawner" method="_on_start_timer_timeout"]
+[connection signal="timeout" from="MobSpawner/SpawnTimer" to="MobSpawner" method="_on_spawn_timer_timeout"]
 [connection signal="finished_read" from="popups" to="." method="check_levels"]
 [connection signal="start_game" from="HUD" to="." method="check_start"]
