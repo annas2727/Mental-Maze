@@ -12,8 +12,8 @@ var spot_to_label = {}
 var current_letter_num = 65
 #const label = preload("res://simple_label.tscn")
 
-@export var y_dim = 15
-@export var x_dim = 25
+@export var y_dim = 35
+@export var x_dim = 35
 @export var starting_coords = Vector2i(0, 0)
 var adj4 = [
 	Vector2i(-1, 0),
@@ -29,7 +29,6 @@ func _ready() -> void:
 	Globals.letters_to_show.clear()
 	place_border()
 	dfs(starting_coords)
-	
 
 func _input(event: InputEvent) -> void:
 	pass
