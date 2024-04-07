@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://MobSpawner.gd" id="4_i0ydt"]
 [ext_resource type="PackedScene" uid="uid://cvo70qd07iu1" path="res://tile_map.tscn" id="5_sm4wp"]
 [ext_resource type="PackedScene" uid="uid://be7o15367excn" path="res://hud.tscn" id="6_h688j"]
-[ext_resource type="PackedScene" path="res://popups.tscn" id="7_fpen2"]
+[ext_resource type="PackedScene" uid="uid://sswoy5ioju3j" path="res://popups.tscn" id="7_fpen2"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bgkpj")
@@ -14,10 +14,10 @@ script = ExtResource("1_bgkpj")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -9087.0
-offset_top = -6124.0
-offset_right = 10709.0
-offset_bottom = 6815.0
+offset_left = -9044.0
+offset_top = -6087.0
+offset_right = 10752.0
+offset_bottom = 6852.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.74902, 0.639216, 1, 1)

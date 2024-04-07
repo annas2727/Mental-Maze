@@ -1,3 +1,6 @@
+# Citation: https://www.1001fonts.com/manaspace-font.html
+# Citation: https://www.1001fonts.com/karmatic-arcade-font.html
+
 extends CanvasLayer
 
 signal start_game

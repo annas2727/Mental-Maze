@@ -1,0 +1,10 @@
+res://default_env.tres::1859de096fabdc7f1950580725fe1468::1712409179::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
+res://hud.tscn::a7e70400edf6349b1180935d634c1705::1712486891::res://.godot/exported/133200997/export-f4cf891e5f7a93b93d9b27cfb8401ccb-hud.scn
+res://iso_roads.tres::f37eb240e9001bcde21978af5e8ff919::1712409179::res://.godot/exported/133200997/export-d8c1c4ed2031c9625fe55ecac78cd547-iso_roads.res
+res://main.tscn::569f6c88035e4094e6d78cacd5fda3ef::1712486891::res://.godot/exported/133200997/export-3070c538c03ee49b7677ff960a3f5195-main.scn
+res://mob.tscn::269906839a5d28eeecfb600eaa9347fe::1712486891::res://.godot/exported/133200997/export-5b94865898bd9b5cb44e426bf42f6f48-mob.scn
+res://node.tscn::5ca22ae080808fd27518cc841c390f86::1712409179::res://.godot/exported/133200997/export-5c1b5421b3a3843354800198f9326b19-node.scn
+res://player.tscn::2fb96ac645807ec862c7fc701dd49343::1712486891::res://.godot/exported/133200997/export-36a25e342948d0ceacc500772b5412b3-player.scn
+res://popups.tscn::26f408f17de91fc9c603ba2a70bb6e31::1712473543::res://.godot/exported/133200997/export-476015aef76b99fde0b3e1ea5f5c7045-popups.scn
+res://tileset.tscn::79c29a9c2362302cb9225ee95f844358::1712486891::res://.godot/exported/133200997/export-47aea4e83326632d051e4d55761a6aec-tileset.scn
+res://tile_map.tscn::c9cf652368314ba1a66b20b4cdf3093d::1712486891::res://.godot/exported/133200997/export-22792ee0018d439a895e1f6e6e7db267-tile_map.scn
