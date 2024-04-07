@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgnsoqns6ribq"]
+[gd_scene load_steps=7 format=3 uid="uid://bgnsoqns6ribq"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bgkpj"]
+[ext_resource type="PackedScene" uid="uid://otc41x2js6mu" path="res://mob.tscn" id="2_nwrd7"]
 [ext_resource type="PackedScene" uid="uid://byka7bkmtud12" path="res://player.tscn" id="3_86i4l"]
 [ext_resource type="Script" path="res://MobSpawner.gd" id="4_i0ydt"]
 [ext_resource type="PackedScene" path="res://popups.tscn" id="5_2j58s"]
@@ -24,6 +25,8 @@ color = Color(0.74902, 0.639216, 1, 1)
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
 
+[node name="Anxiety Mob" parent="." instance=ExtResource("2_nwrd7")]
+
 [node name="MobSpawns" type="Node" parent="."]
 
 [node name="MobSpawn1" type="Marker2D" parent="MobSpawns" groups=["spawn"]]
@@ -42,7 +45,6 @@ position = Vector2(764, 458)
 script = ExtResource("4_i0ydt")
 
 [node name="StartTimer" type="Timer" parent="MobSpawner"]
-wait_time = 5.0
 one_shot = true
 
 [node name="SpawnTimer" type="Timer" parent="MobSpawner"]
@@ -53,7 +55,7 @@ wait_time = 7.0
 [node name="HUD" parent="." instance=ExtResource("6_3085q")]
 
 [connection signal="show_screen" from="." to="Player" method="show_character"]
-[connection signal="show_screen" from="." to="MobSpawner" method="_on_spawn_timer_timeout"]
+[connection signal="show_screen" from="." to="MobSpawner" method="_start_spawning"]
 [connection signal="hit" from="Player" to="." method="lose_life"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="MobSpawner/StartTimer" to="MobSpawner" method="_on_start_timer_timeout"]
