@@ -1,3 +1,4 @@
 extends Node
 
-# Main file for the game (set as main scene)
+# Main (set as main scene)
+
