@@ -1,5 +1,10 @@
+res://tile_map.tscn
 res://main.tscn
 res://mob.tscn
-res://Main.gd
+res://player.tscn
+res://hud.tscn
+res://tileset.tscn
+res://maze_gen.gd
 res://MobSpawner.gd
 res://player.gd
+res://Main.gd

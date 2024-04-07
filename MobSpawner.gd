@@ -1,10 +1,6 @@
 # Citation: https://docs.godotengine.org/en/stable/tutorials/scripting/nodes_and_scene_instances.html
 extends Node2D
 
-# A mob spawns every 7 seconds
-func _ready():
-	_on_spawn_timer_timeout()
-	
 	
 func _on_spawn_timer_timeout():
 	# Instantiate the mob scene for spawning 
@@ -18,3 +14,8 @@ func _on_spawn_timer_timeout():
 		var random_index = randi() % spawn_points.size()
 		var spawn_position = spawn_points[random_index].global_position
 		mob_instantiate.global_position = spawn_position
+	$SpawnTimer.start()
+		
+# A mob spawns every 7 seconds
+func _ready():
+	pass
